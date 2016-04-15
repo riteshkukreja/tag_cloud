@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tag Cloud</title>
+
+</head>
+<body>
+
+<div id="cloud"></div>
+
+<script type="text/javascript" src="script/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="script/cloud.js"></script>
+<script type="text/javascript">
+	var max = 1000, min = 20;
+	var characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'];
+	var getRandomString = function(len) {
+		str = '';
+		for (var i = 0; i < len; i++)
+			str += characters[Math.floor(Math.random() * (characters.length))];
+		return str;
+	}
+	var getList = function(len) {
+		var list = [];
+		for (var i = 0 ; i < len; i++) {
+			str = getRandomString(5);
+			list.push([str, Math.random() * (max - min) + min]);
+			//console.log(list);
+		}
+		return list;
+	}
+	c = new cloud('#cloud', getList(10));
+</script>
+
+</body>
+</html>
